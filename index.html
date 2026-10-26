@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Bimo di Perpustakaan Digital - Media Pembelajaran Kelas 5 SD</title>
+    <!-- Google Fonts: Poppins & Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================
+           1. STYLES & RESET (CSS3)
+           ========================================== */
+        :root {
+            --primary-blue: #1e88e5;
+            --primary-dark: #1565c0;
+            --secondary-yellow: #ffca28;
+            --accent-orange: #ff9800;
+            --accent-green: #4caf50;
+            --bg-light: #f4f8fb;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #6c757d;
+            --border-radius: 18px;
+            --box-shadow: 0 10px 25px rgba(30, 136, 229, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Navigation */
+        header {
+            background: linear-gradient(135deg, #1976d2, #1565c0);
+            color: white;
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .user-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Nav Tabs Grid */
+        .nav-tabs-wrapper {
+            background: white;
+            border-bottom: 2px solid #eef2f6;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+
+        .nav-tabs {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            padding: 0 1rem;
+        }
+
+        .nav-tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-tab-btn:hover, .nav-tab-btn.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+            background-color: rgba(30, 136, 229, 0.04);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1100px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        /* Content Pages */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards & Panes */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: #1a252f;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 3px solid var(--secondary-yellow);
+            padding-bottom: 0.5rem;
+            width: fit-content;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(30, 136, 229, 0.3);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(30, 136, 229, 0.4);
+        }
+
+        .btn-yellow {
+            background: var(--secondary-yellow);
+            color: #333;
+            box-shadow: 0 4px 10px rgba(255, 202, 40, 0.4);
+        }
+
+        .btn-yellow:hover {
+            background: #fbc02d;
+            color: #000;
+        }
+
+        .btn-green {
+            background: var(--accent-green);
+            color: white;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-green:hover {
+            background: #388e3c;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .btn:disabled {
+            background: #cbd5e1;
+            color: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Hero Welcome Section */
+        .welcome-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .welcome-hero-img {
+            text-align: center;
+        }
+
+        .welcome-hero-img svg {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.08));
+        }
+
+        .input-group {
+            margin: 1.5rem 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .input-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(30, 136, 229, 0.15);
+        }
+
+        /* Story Reader Components */
+        .story-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2rem;
+        }
+
+        .story-illustration-box {
+            background: #eef6ff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #bbdefb;
+        }
+
+        .story-illustration-box svg {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+        }
+
+        .story-content-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .story-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #334155;
+            background: #fafafa;
+            padding: 1.5rem;
+            border-radius: 14px;
+            border-left: 5px solid var(--primary-blue);
+            margin-bottom: 1.5rem;
+            min-height: 220px;
+        }
+
+        .story-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+            width: 25%;
+            transition: width 0.4s ease;
+        }
+
+        /* Interactive Elements / Cards Grid */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-color: var(--primary-blue);
+        }
+
+        .majas-badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Modals & Popups */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-body {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-body {
+            transform: scale(1);
+        }
+
+        /* Quiz UI */
+        .quiz-question-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid #cbd5e1;
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-blue);
+            background: #f0f7ff;
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+        }
+
+        .quiz-option.correct {
+            border-color: var(--accent-green);
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .explanation-box {
+            margin-top: 10px;
+            padding: 12px 16px;
+            background: #f1f5f9;
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        /* Writing & Textarea */
+        textarea.input-control {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 3000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Certificate / Result Section */
+        .result-card {
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+            border: 3px solid #bbdefb;
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem auto;
+            box-shadow: 0 10px 20px rgba(30, 136, 229, 0.3);
+        }
+
+        .score-circle .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .score-circle .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 868px) {
+            .welcome-hero, .story-container {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .header-container {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .story-illustration-box {
+                order: -1;
+            }
+        }
+
+        /* Print Media Styles */
+        @media print {
+            header, .nav-tabs-wrapper, .btn, .no-print {
+                display: none !important;
+            }
+            body {
+                background: white;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         HEADER & NAV NAVIGATION
+         ========================================== -->
+    <header>
+        <div class="header-container">
+            <div class="logo-title">
+                <i class="fa-solid fa-book-bookmark" style="color: var(--secondary-yellow);"></i>
+                <span>Petualangan Bimo di Perpustakaan Digital</span>
+            </div>
+            <div class="user-badge" id="userDisplayBadge">
+                <i class="fa-solid fa-user"></i>
+                <span id="headerUserName">Siswa Kelas 5</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-tabs-wrapper">
+        <nav class="nav-tabs">
+            <button class="nav-tab-btn active" onclick="switchPage('page-home')"><i class="fa-solid fa-house"></i> Beranda</button>
+            <button class="nav-tab-btn" onclick="switchPage('page-tujuan')"><i class="fa-solid fa-bullseye"></i> Tujuan</button>
+            <button class="nav-tab-btn" onclick="switchPage('page-cerita')"><i class="fa-solid fa-book-open"></i> Baca Cerita</button>
+            <button class="nav-tab-btn" onclick="switchPage('page-unsur')"><i class="fa-solid fa-shapes"></i> Unsur & Majas</button>
+            <button class="nav-tab-btn" onclick="switchPage('page-menyimak')"><i class="fa-solid fa-headphones"></i> Menyimak</button>
+            <button class="nav-tab-btn" onclick="switchPage('page-bicara')"><i class="fa-solid fa-comments"></i> Berbicara</button>
+            <button class="nav-tab-btn" onclick="switchPage('page-menulis')"><i class="fa-solid fa-pen-nib"></i> Menulis</button>
+            <button class="nav-tab-btn" onclick="switchPage('page-kuis')"><i class="fa-solid fa-pen-to-square"></i> Kuis</button>
+            <button class="nav-tab-btn" onclick="switchPage('page-hasil')"><i class="fa-solid fa-award"></i> Hasil Belajar</button>
+        </nav>
+    </div>
+
+    <!-- ==========================================
+         MAIN CONTENT CONTAINERS
+         ========================================== -->
+    <main>
+
+        <!-- 1. HALAMAN PEMBUKA -->
+        <section id="page-home" class="page-section active">
+            <div class="card">
+                <div class="welcome-hero">
+                    <div>
+                        <span class="majas-badge" style="background:#fef3c7; color:#b45309;"><i class="fa-solid fa-star"></i> Bahasa Indonesia Kelas 5 SD</span>
+                        <h1 style="font-size: 2.2rem; margin: 0.5rem 0 1rem; color: var(--primary-dark);">Selamat Datang di Dunia Petualangan Literasi!</h1>
+                        <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.5rem;">
+                            Halo sahabat cerdas! Mari bergabung bersama Bimo menjelajahi rahasia di perpustakaan digital sekolah. Temukan teka-teki, majas indah, dan pengalaman membaca yang interaktif!
+                        </p>
+                        
+                        <div class="input-group">
+                            <label for="inputStudentName"><i class="fa-solid fa-id-card"></i> Masukkan Nama Lengkapmu:</label>
+                            <input type="text" id="inputStudentName" class="input-control" placeholder="Contoh: Budi Pratama" autocomplete="off">
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button class="btn btn-yellow" onclick="startAdventure()">
+                                <i class="fa-solid fa-rocket"></i> Mulai Petualangan
+                            </button>
+                            <button class="btn btn-outline" onclick="switchPage('page-tujuan')">
+                                <i class="fa-solid fa-circle-info"></i> Petunjuk & Tujuan
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="welcome-hero-img">
+                        <!-- SVG Illustration of Bimo with Digital Book -->
+                        <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="200" cy="175" r="150" fill="#E0F2FE"/>
+                            <rect x="80" y="220" width="240" height="20" rx="10" fill="#94A3B8"/>
+                            <rect x="100" y="100" width="200" height="130" rx="12" fill="#1E293B"/>
+                            <rect x="110" y="110" width="180" height="110" rx="6" fill="#38BDF8"/>
+                            <!-- Computer Screen Graphics -->
+                            <path d="M130 140 H270 M130 160 H240 M130 180 H210" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                            <!-- Mascot Bimo Avatar -->
+                            <circle cx="200" cy="80" r="35" fill="#FDBA74"/>
+                            <path d="M170 70 C170 45 230 45 230 70 C230 50 170 50 170 70 Z" fill="#1E3A8A"/>
+                            <circle cx="188" cy="75" r="4" fill="#1E293B"/>
+                            <circle cx="212" cy="75" r="4" fill="#1E293B"/>
+                            <path d="M192 90 Q200 98 208 90" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="200" cy="280" r="15" fill="#F59E0B"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="background: #f8fafc;">
+                <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-compass" style="color:var(--primary-blue)"></i> Petunjuk Singkat Penggunaan:</h3>
+                <div class="grid-cards">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-book-reader fa-2x" style="color:var(--primary-blue); margin-bottom: 0.5rem;"></i>
+                        <h4>1. Baca & Simak</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Jelajahi alur cerita bab demi bab atau gunakan tombol narasi suara untuk menyimak.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-solid fa-brain fa-2x" style="color:var(--accent-orange); margin-bottom: 0.5rem;"></i>
+                        <h4>2. Pahami Materi</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Pelajari unsur-unsur intrinsik cerita dan jenis-jenis majas secara interaktif.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-solid fa-pen-fancy fa-2x" style="color:var(--accent-green); margin-bottom: 0.5rem;"></i>
+                        <h4>3. Aktivitas & Kuis</h4>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">Latih ketrampilan presentasi, menulis akhir cerita, dan selesaikan 10 kuis pilihan ganda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. HALAMAN TUJUAN PEMBELAJARAN -->
+        <section id="page-tujuan" class="page-section">
+            <div class="card">
+                <h2 class="section-title"><i class="fa-solid fa-bullseye"></i> Tujuan Pembelajaran</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Berdasarkan Kurikulum Merdeka untuk Bahasa Indonesia Kelas 5 SD, setelah menyelesaikan petualangan ini siswa diharapkan mampu:</p>
+
+                <div class="grid-cards">
+                    <div class="feature-card" style="border-left: 5px solid #3b82f6;">
+                        <span class="majas-badge">Membaca & Memirsa</span>
+                        <h4 style="margin-top: 0.5rem;">Memaami Isi Cerita</h4>
+                        <p style="font-size: 0.95rem; color: #475569;">Membaca dan memahami isi cerita pendek "Petualangan Bimo di Perpustakaan Digital" secara menyeluruh.</p>
+                    </div>
+
+                    <div class="feature-card" style="border-left: 5px solid #10b981;">
+                        <span class="majas-badge" style="background:#d1fae5; color:#047857;">Analis Unsur</span>
+                        <h4 style="margin-top: 0.5rem;">Unsur & Majas</h4>
+                        <p style="font-size: 0.95rem; color: #475569;">Menemukan tokoh, latar, konflik, amanat, serta mengidentifikasi majas personifikasi, simile, dan hiperbola.</p>
+                    </div>
+
+                    <div class="feature-card" style="border-left: 5px solid #f59e0b;">
+                        <span class="majas-badge" style="background:#fef3c7; color:#b45309;">Menyimak & Bicara</span>
+                        <h4 style="margin-top: 0.5rem;">Menceritakan Kembali</h4>
+                        <p style="font-size: 0.95rem; color: #475569;">Menjawab pertanyaan menyimak dan menyusun kerangka presentasi menceritakan kembali isi cerita.</p>
+                    </div>
+
+                    <div class="feature-card" style="border-left: 5px solid #8b5cf6;">
+                        <span class="majas-badge" style="background:#ede9fe; color:#6d28d9;">Menulis Kreatif</span>
+                        <h4 style="margin-top: 0.5rem;">Akhir Cerita Alternatif</h4>
+                        <p style="font-size: 0.95rem; color: #475569;">Menuliskan akhir cerita alternatif menggunakan kreativitas dan Bahasa Indonesia yang baik dan benar.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn" onclick="switchPage('page-cerita')">
+                        <i class="fa-solid fa-arrow-right"></i> Lanjut Membaca Cerita
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. HALAMAN CERITA INTERAKTIF -->
+        <section id="page-cerita" class="page-section">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <h2 class="section-title" style="margin-bottom:0;"><i class="fa-solid fa-book-open"></i> Cerita Interaktif</h2>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;" onclick="speakStoryText()">
+                            <i class="fa-solid fa-volume-high"></i> <span id="ttsBtnText">Dengarkan Cerita</span>
+                        </button>
+                        <button class="btn btn-yellow" style="padding: 8px 16px; font-size: 0.9rem;" onclick="openGlossaryModal()">
+                            <i class="fa-solid fa-spell-check"></i> Makna Kata
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="storyProgressBar"></div>
+                </div>
+
+                <div class="story-container">
+                    <!-- Illustration Area -->
+                    <div class="story-illustration-box">
+                        <div id="storySvgGraphic">
+                            <!-- SVG render updated via JS based on step -->
+                        </div>
+                        <h4 id="storyChapterTitle" style="margin-top: 1rem; color: var(--primary-dark);">Bagian 1: Perpustakaan Baru</h4>
+                    </div>
+
+                    <!-- Story Text Box -->
+                    <div class="story-content-box">
+                        <div class="story-text" id="storyTextDisplay">
+                            <!-- Filled dynamically via JS -->
+                        </div>
+
+                        <!-- Navigation Controls -->
+                        <div class="story-nav">
+                            <button class="btn btn-outline" id="prevStoryBtn" onclick="changeStoryPage(-1)">
+                                <i class="fa-solid fa-chevron-left"></i> Sebelumnya
+                            </button>
+                            <span style="font-weight: 700; color: var(--text-muted);" id="storyStepIndicator">Halaman 1 dari 4</span>
+                            <button class="btn" id="nextStoryBtn" onclick="changeStoryPage(1)">
+                                Berikutnya <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. HALAMAN UNSUR CERITA & MAJAS -->
+        <section id="page-unsur" class="page-section">
+            <div class="card">
+                <h2 class="section-title"><i class="fa-solid fa-shapes"></i> Unsur Intrinsik Cerita</h2>
+                <div class="grid-cards">
+                    <div class="feature-card">
+                        <h4 style="color:var(--primary-blue);"><i class="fa-solid fa-user-gear"></i> Tokoh & Penokohan</h4>
+                        <p style="font-size:0.95rem; margin-top:6px;"><strong>Bimo:</strong> Rela berkorban, ingin tahu, jujur, dan bertanggung jawab.<br><strong>Pak Hadi (Pustakawan):</strong> Bijaksana dan mengayomi.<br><strong>Rani (Teman Bimo):</strong> Cerdas dan suka bekerja sama.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4 style="color:var(--accent-orange);"><i class="fa-solid fa-map-location-dot"></i> Latar Tempat & Waktu</h4>
+                        <p style="font-size:0.95rem; margin-top:6px;"><strong>Tempat:</strong> Ruang Perpustakaan Digital SD Nusantara.<br><strong>Waktu:</strong> Jam istirahat sekolah dan siang hari.<br><strong>Suasana:</strong> Hening, penuh teka-teki, lalu menggembirakan.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4 style="color:var(--accent-green);"><i class="fa-solid fa-code-commit"></i> Alur & Konflik</h4>
+                        <p style="font-size:0.95rem; margin-top:6px;"><strong>Alur:</strong> Maju.<br><strong>Konflik:</strong> Komputer berpendar misterius dan Bimo harus menyelesaikan teka-teki literasi untuk membuka kunci file digital tanpa merusak fasilitas sekolah.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4 style="color:#8b5cf6;"><i class="fa-solid fa-hand-holding-heart"></i> Amanat / Pesan Moral</h4>
+                        <p style="font-size:0.95rem; margin-top:6px;">Gunakan teknologi dengan bijak, jujur di setiap tindakan, sukai membaca buku, serta utamakan kerja sama saat memecahkan masalah.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fa-solid fa-quote-left"></i> Belajar Majas dalam Cerita</h2>
+                <p style="color:var(--text-muted); margin-bottom: 1.5rem;">Majas adalah gaya bahasa indah yang digunakan penulis untuk menghidupkan cerita. Mari pelajari 3 jenis majas yang ada di cerita Bimo:</p>
+
+                <div class="grid-cards">
+                    <!-- Personifikasi -->
+                    <div class="feature-card" style="background:#f0f9ff; border-color:#bae6fd;">
+                        <span class="majas-badge">1. Majas Personifikasi</span>
+                        <h4 style="margin: 6px 0;">Benda Mati Seolah Hidup</h4>
+                        <p style="font-size:0.9rem; color:#334155;">Majas yang menganggap benda mati dapat berperilaku seperti manusia.</p>
+                        <div style="background:white; padding:10px; border-radius:8px; margin-top:10px; font-style:italic; font-size:0.9rem; border-left:3px solid var(--primary-blue);">
+                            "Layar komputer melambaikan cahaya emas panggilan."
+                        </div>
+                        <p style="font-size:0.85rem; margin-top:6px; color:#0369a1;"><strong>Penjelasan:</strong> Layar komputer (benda mati) dikatakan 'melambaikan cahaya' seolah-olah tangan manusia.</p>
+                    </div>
+
+                    <!-- Simile -->
+                    <div class="feature-card" style="background:#fefce8; border-color:#fef08a;">
+                        <span class="majas-badge" style="background:#fef3c7; color:#b45309;">2. Majas Simile</span>
+                        <h4 style="margin: 6px 0;">Pengumpamaan Langsung</h4>
+                        <p style="font-size:0.9rem; color:#334155;">Majas perbandingan yang menggunakan kata pembanding: <em>seperti, bagaikan, laksana, bak</em>.</p>
+                        <div style="background:white; padding:10px; border-radius:8px; margin-top:10px; font-style:italic; font-size:0.9rem; border-left:3px solid var(--secondary-yellow);">
+                            "Pengetahuan Bimo berkembang cepat bagaikan tunas di musim hujan."
+                        </div>
+                        <p style="font-size:0.85rem; margin-top:6px; color:#b45309;"><strong>Penjelasan:</strong> Membandingkan kecepatan belajar Bimo dengan tumbuhnya tanaman menggunakan kata 'bagaikan'.</p>
+                    </div>
+
+                    <!-- Hiperbola -->
+                    <div class="feature-card" style="background:#fdf2f8; border-color:#fbcfe8;">
+                        <span class="majas-badge" style="background:#fce7f3; color:#be185d;">3. Majas Hiperbola</span>
+                        <h4 style="margin: 6px 0;">Ungkapan Berlebihan</h4>
+                        <p style="font-size:0.9rem; color:#334155;">Majas yang menggunakan ungkapan berlebihan untuk menekan maksud tertentu.</p>
+                        <div style="background:white; padding:10px; border-radius:8px; margin-top:10px; font-style:italic; font-size:0.9rem; border-left:3px solid #ec4899;">
+                            "Rasa penasaran Bimo setinggi langit saat melihat buku kuno itu."
+                        </div>
+                        <p style="font-size:0.85rem; margin-top:6px; color:#be185d;"><strong>Penjelasan:</strong> Menggambarkan rasa penasaran yang sangat besar dengan kiasan 'setinggi langit'.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. HALAMAN AKTIVITAS MENYIMAK -->
+        <section id="page-menyimak" class="page-section">
+            <div class="card">
+                <h2 class="section-title"><i class="fa-solid fa-headphones"></i> Aktivitas Menyimak</h2>
+                <p style="margin-bottom: 1rem;">Dengarkan pembacaan cerita lengkap berikut, lalu jawab pertanyaan pemahaman di bawahnya!</p>
+
+                <div style="background: #eef6ff; padding: 1.5rem; border-radius: 14px; text-align: center; margin-bottom: 2rem;">
+                    <i class="fa-solid fa-circle-play fa-3x" style="color:var(--primary-blue); cursor:pointer; margin-bottom:10px;" onclick="speakStoryTextFull()"></i>
+                    <h4 style="color:var(--primary-dark);">Putar Narasi Cerita Lengkap</h4>
+                    <p style="font-size: 0.9rem; color:var(--text-muted);">Pastikan speaker/headset laptop atau HP kamu aktif.</p>
+                </div>
+
+                <h3>Pertanyaan Pemahaman Menyimak:</h3>
+                <div id="listeningQuizList" style="margin-top: 1rem;">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. HALAMAN AKTIVITAS BERBICARA -->
+        <section id="page-bicara" class="page-section">
+            <div class="card">
+                <h2 class="section-title"><i class="fa-solid fa-comments"></i> Berbicara & Mempresentasikan</h2>
+                <p style="margin-bottom: 1.5rem;">Latihlah kemampuan berbicaramu! Susunlah kerangka presentasi untuk menceritakan kembali kisah "Petualangan Bimo" di depan kelas atau teman sebangkumu.</p>
+
+                <div class="grid-cards" style="margin-bottom: 1.5rem;">
+                    <div class="feature-card" style="background:#f8fafc;">
+                        <h4><i class="fa-solid fa-list-check" style="color:var(--primary-blue);"></i> Panduan Kerangka Presentasi:</h4>
+                        <ul style="margin-left: 1.2rem; font-size: 0.95rem; margin-top: 0.5rem; line-height: 1.8;">
+                            <li><strong>Pembuka:</strong> Salam dan judul cerita yang akan disampaikan.</li>
+                            <li><strong>Tokoh Utama:</strong> Siapa tokoh utamanya dan bagaimana sifatnya?</li>
+                            <li><strong>Awal Masalah:</strong> Kejadian apa yang dialami Bimo di perpustakaan?</li>
+                            <li><strong>Petualangan:</strong> Cara Bimo dan Rani memecahkan teka-teki.</li>
+                            <li><strong>Penutup & Amanat:</strong> Pesan moral yang kamu dapatkan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="speakOutlineText"><i class="fa-solid fa-pen"></i> Tulis Kerangka Presentasimu di Sini:</label>
+                    <textarea id="speakOutlineText" class="input-control" placeholder="Contoh: Halo teman-teman, hari ini saya akan menceritakan kisah Bimo..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-yellow" onclick="showSampleOutline()">
+                        <i class="fa-solid fa-lightbulb"></i> Lihat Contoh Kerangka Presentasi
+                    </button>
+                    <button class="btn btn-green" onclick="saveSpeakOutline()">
+                        <i class="fa-solid fa-floppy-disk"></i> Simpan Draf Presentasi
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. HALAMAN AKTIVITAS MENULIS -->
+        <section id="page-menulis" class="page-section">
+            <div class="card">
+                <h2 class="section-title"><i class="fa-solid fa-pen-nib"></i> Aktivitas Menulis Kreatif</h2>
+                <p style="margin-bottom: 1rem;">Bagaimana jika kamu yang menentukan akhir cerita Bimo? Tulislah <strong>Akhir Cerita Alternatif</strong> versi kreasi manismu sendiri!</p>
+
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:1rem; border-radius:12px; margin-bottom:1.5rem; font-size:0.95rem;">
+                    <i class="fa-solid fa-circle-check" style="color:var(--accent-green);"></i> <strong>Ketentuan Menulis:</strong>
+                    <ul style="margin-left: 1.2rem; margin-top: 0.3rem;">
+                        <li>Tuliskan minimal 3 - 5 kalimat.</li>
+                        <li>Gunakan sekurang-kurangnya satu majas (personifikasi/simile/hiperbola).</li>
+                        <li>Pastikan cerita berakhir dengan pesan moral yang positif.</li>
+                    </ul>
+                </div>
+
+                <div class="input-group">
+                    <label for="writeAltEndingText"><i class="fa-solid fa-keyboard"></i> Kolom Cerita Alternatifmu:</label>
+                    <textarea id="writeAltEndingText" class="input-control" style="min-height: 180px;" placeholder="Pada suatu hari setelah membuka buku digital itu, Bimo dan Rani menemukan sebuah pintu rahasia..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-outline" onclick="checkWritingCompleteness()">
+                        <i class="fa-solid fa-magnifying-glass"></i> Periksa Kelengkapan
+                    </button>
+                    <button class="btn btn-green" onclick="downloadWritingAsTxt()">
+                        <i class="fa-solid fa-download"></i> Simpan Jawaban (.txt)
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. HALAMAN KUIS INTERAKTIF -->
+        <section id="page-kuis" class="page-section">
+            <div class="card">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom: 1rem;">
+                    <h2 class="section-title" style="margin-bottom:0;"><i class="fa-solid fa-pen-to-square"></i> Kuis Evaluasi Pemahaman</h2>
+                    <span class="user-badge" style="background:#1e88e5; color:white;">10 Soal Pilihan Ganda</span>
+                </div>
+                <p style="color:var(--text-muted); margin-bottom: 1.5rem;">Pilihlah satu jawaban yang paling tepat (A, B, C, atau D) untuk setiap pertanyaan di bawah ini!</p>
+
+                <div id="quizContainer">
+                    <!-- Rendered by JavaScript -->
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn btn-yellow btn-lg" id="submitQuizBtn" onclick="submitQuiz()">
+                        <i class="fa-solid fa-paper-plane"></i> Kirim & Lihat Nilai
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. HALAMAN HASIL BELAJAR -->
+        <section id="page-hasil" class="page-section">
+            <div class="card result-card">
+                <h2 style="color:var(--primary-dark);"><i class="fa-solid fa-trophy" style="color:var(--secondary-yellow);"></i> Laporan Hasil Belajar Siswa</h2>
+                <p style="color:var(--text-muted);">Media Pembelajaran Interaktif Bahasa Indonesia Kelas 5 SD</p>
+
+                <div style="margin: 1.5rem 0;">
+                    <h3 id="resultStudentName" style="font-size: 1.6rem; color:#1e293b;">Nama Siswa: -</h3>
+                    <p id="resultTimestamp" style="font-size:0.9rem; color:var(--text-muted);"></p>
+                </div>
+
+                <div class="score-circle">
+                    <span class="number" id="resultScoreNum">0</span>
+                    <span class="label">NILAI AKHIR</span>
+                </div>
+
+                <div style="display:flex; justify-content:center; gap:2rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+                    <div style="background:white; padding:12px 24px; border-radius:12px; border:1px solid #e2e8f0;">
+                        <span style="display:block; font-size:0.85rem; color:var(--text-muted);">Jawaban Benar</span>
+                        <strong style="font-size:1.4rem; color:var(--accent-green);" id="resultCorrectNum">0 / 10</strong>
+                    </div>
+                    <div style="background:white; padding:12px 24px; border-radius:12px; border:1px solid #e2e8f0;">
+                        <span style="display:block; font-size:0.85rem; color:var(--text-muted);">Jawaban Salah</span>
+                        <strong style="font-size:1.4rem; color:#ef4444;" id="resultWrongNum">0 / 10</strong>
+                    </div>
+                </div>
+
+                <div id="resultMotivationMsg" style="background:#e0f2fe; padding:1rem; border-radius:12px; color:#0369a1; font-weight:700; margin-bottom:2rem;">
+                    Selesaikan kuis terlebih dahulu untuk melihat hasil belajar lengkap!
+                </div>
+
+                <div class="no-print" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+                    <button class="btn btn-outline" onclick="window.print()">
+                        <i class="fa-solid fa-print"></i> Cetak Hasil / Save PDF
+                    </button>
+                    <button class="btn btn-yellow" onclick="resetQuizAndRetry()">
+                        <i class="fa-solid fa-rotate-right"></i> Ulangi Kuis
+                    </button>
+                    <button class="btn" onclick="switchPage('page-home')">
+                        <i class="fa-solid fa-house"></i> Kembali ke Beranda
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         MODAL POPUP GLOSARIUM / MAKNA KATA
+         ========================================== -->
+    <div class="modal-overlay" id="glossaryModal">
+        <div class="modal-body">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                <h3><i class="fa-solid fa-book" style="color:var(--primary-blue);"></i> Glosarium Makna Kata</h3>
+                <button style="background:none; border:none; font-size:1.4rem; cursor:pointer;" onclick="closeGlossaryModal()">&times;</button>
+            </div>
+            <div style="max-height:320px; overflow-y:auto; line-height:1.8;">
+                <p><strong>1. Digital:</strong> Berhubungan dengan komputer atau internet.</p>
+                <p><strong>2. Koleksi:</strong> Kumpulan benda atau dokumen yang diminati.</p>
+                <p><strong>3. Katalog:</strong> Daftar informasi buku atau media yang tersusun rapi.</p>
+                <p><strong>4. Kata Kunci:</strong> Kata utama yang digunakan untuk mencari informasi.</p>
+                <p><strong>5. Ensiklopedia:</strong> Karya rujukan yang berisi informasi lengkap berbagai ilmu.</p>
+            </div>
+            <div style="margin-top:1.5rem; text-align:right;">
+                <button class="btn" onclick="closeGlossaryModal()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toastNotification">
+        <i class="fa-solid fa-circle-info" id="toastIcon"></i>
+        <span id="toastMessage">Pesan Notifikasi</span>
+    </div>
+
+    <!-- ==========================================
+         JAVASCRIPT LOGIC
+         ========================================== -->
+    <script>
+        /* ----------------------------------------------------
+           DATA STATE & APP VARIABLES
+           ---------------------------------------------------- */
+        let studentName = "";
+        let currentStoryStep = 0;
+        let quizAnswers = Array(10).fill(null);
+        let quizSubmitted = false;
+
+        // Data Cerita Lengkap (4 Bab)
+        const storyData = [
+            {
+                title: "Bagian 1: Perpustakaan Baru",
+                text: "Siang itu, matahari bersinar sangat terik di SD Nusantara. Bimo bergegas melangkahkan kaki menuju gedung perpustakaan digital baru yang baru saja diresmikan. Di dalam ruangan yang sejuk itu, berjejer rapi komputer-komputer canggih. 'Wah, megah sekali perpustakaan ini!' gumam Bimo dengan rasa penasaran setinggi langit. Rasa ingin tahunya membumbung tinggi melihat deretan layar interaktif yang memancar terang.",
+                svg: `<svg viewBox="0 0 300 220" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="220" rx="12" fill="#E0F2FE"/><rect x="40" y="140" width="220" height="60" rx="6" fill="#1E293B"/><rect x="50" y="40" width="200" height="110" rx="8" fill="#0284C7"/><path d="M70 70 H230 M70 90 H180 M70 110 H210" stroke="white" stroke-width="4"/><circle cx="150" cy="180" r="8" fill="#F59E0B"/></svg>`
+            },
+            {
+                title: "Bagian 2: Layar Misterius",
+                text: "Saat Bimo duduk di salah satu sudut, tiba-tiba layar komputer melambaikan cahaya emas panggilan kepadanya. Sebuah jendela dokumen tua terbuka secara misterius dengan judul 'Ensiklopedia Rahasia Nusantara'. Namun, dokumen tersebut terkunci dengan teka-teki literasi. Bimo tertegun. 'Apakah ini petunjuk dari masa lalu?' tanyanya dalam hati. Tanpa ragu, ia mengajak Rani, teman sebangkunya yang cerdas, untuk bekerja sama memecahkan sandi tersebut.",
+                svg: `<svg viewBox="0 0 300 220" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="220" rx="12" fill="#FEF3C7"/><rect x="60" y="30" width="180" height="140" rx="10" fill="#D97706"/><rect x="70" y="40" width="160" height="120" rx="6" fill="#FFFBEB"/><path d="M90 70 L110 90 L210 90 M90 110 H210 M90 130 H170" stroke="#B45309" stroke-width="4"/><circle cx="150" cy="180" r="14" fill="#10B981"/></svg>`
+            },
+            {
+                title: "Bagian 3: Memecahkan Teka-teki",
+                text: "Teka-teki di layar berbunyi: 'Carilah kata kunci bijak tentang kejujuran dan membaca!' Bimo dan Rani membuka katalog digital. Pengetahuan Bimo berkembang cepat bagaikan tunas di musim hujan saat membaca ribuan referensi. Dengan tekun dan jujur tanpa mencoba memintas sistem, mereka menemukan tiga kata kunci utama: 'Buku', 'Jujur', dan 'Teknologi'. Begitu kata kunci diketikkan, layar bergetar pelan dan terbuka!",
+                svg: `<svg viewBox="0 0 300 220" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="220" rx="12" fill="#DCFCE7"/><circle cx="150" cy="110" r="70" fill="#22C55E"/><path d="M120 110 L140 130 L180 90" stroke="white" stroke-width="10" stroke-linecap="round"/></svg>`
+            },
+            {
+                title: "Bagian 4: Pesan Emas",
+                text: "Dokumen misterius itu berisi pesan bijak dari Pak Hadi, penjaga perpustakaan: 'Selamat Bimo dan Rani! Kalian telah membuktikan bahwa teknologi jika digunakan dengan bijak dan jujur akan membuka jendela ilmu dunia.' Bimo tersenyum bangga. Ia berjanji akan terus rajin membaca dan memanfaatkan fasilitas digital sekolah dengan penuh tanggung jawab demi meraih cita-cita.",
+                svg: `<svg viewBox="0 0 300 220" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="220" rx="12" fill="#E0E7FF"/><polygon points="150,30 180,90 240,90 190,130 210,190 150,150 90,190 110,130 60,90 120,90" fill="#6366F1"/></svg>`
+            }
+        ];
+
+        // Data Kuis 10 Soal
+        const quizQuestions = [
+            {
+                q: "Siapakah tokoh utama dalam cerita pendek tersebut?",
+                options: ["A. Pak Hadi", "B. Bimo", "C. Rani", "D. Pak Guru"],
+                answer: 1,
+                exp: "Tokoh utama yang mengalami petualangan adalah Bimo."
+            },
+            {
+                q: "Di manakah latar tempat utama terjadinya cerita?",
+                options: ["A. Ruang Kelas 5", "B. Halaman Sekolah", "C. Perpustakaan Digital", "D. Kantin Sekolah"],
+                answer: 2,
+                exp: "Cerita berlangsung di ruang Perpustakaan Digital SD Nusantara."
+            },
+            {
+                q: "Apa masalah utama (konflik) yang dihadapi Bimo?",
+                options: [
+                    "A. Bimo kehilangan buku tulisnya",
+                    "B. Bimo tidak bisa menggunakan komputer",
+                    "C. Dokumen digital penting terkunci oleh teka-teki literasi",
+                    "D. Komputer perpustakaan rusak total"
+                ],
+                answer: 2,
+                exp: "Konfliknya adalah dokumen misterius yang terkunci oleh teka-teki literasi."
+            },
+            {
+                q: "Sikap positif apa yang ditunjukkan Bimo dan Rani saat memecahkan teka-teki?",
+                options: ["A. Curang dan tergesa-gesa", "B. Jujur, tekun, dan bekerja sama", "C. Acuh tak acuh", "D. Mengandalkan orang lain"],
+                answer: 1,
+                exp: "Bimo dan Rani bekerja sama secara tekun dan jujur tanpa memintas sistem."
+            },
+            {
+                q: "Kalimat 'Rasa ingin tahunya membumbung tinggi' termasuk contoh majas...",
+                options: ["A. Personifikasi", "B. Simile", "C. Hiperbola", "D. Metanomi"],
+                answer: 2,
+                exp: "Majas hiperbola menggunakan ungkapan berlebihan untuk menekankan maksud."
+            },
+            {
+                q: "Kalimat 'Layar komputer melambaikan cahaya emas' merupakan majas...",
+                options: ["A. Personifikasi", "B. Simile", "C. Hiperbola", "D. Litotes"],
+                answer: 0,
+                exp: "Personifikasi menganggap benda mati (layar) berperilaku seperti manusia (melambaikan)."
+            },
+            {
+                q: "Kalimat 'Pengetahuan Bimo berkembang cepat bagaikan tunas di musim hujan' menggunakan majas...",
+                options: ["A. Hiperbola", "B. Personifikasi", "C. Simile", "D. Aliterasi"],
+                answer: 2,
+                exp: "Simile menggunakan kata pembanding langsung seperti 'bagaikan'."
+            },
+            {
+                q: "Apakah makna kata 'Digital' pada cerita di atas?",
+                options: ["A. Berhubungan dengan kertas konvensional", "B. Berhubungan dengan teknologi komputer/internet", "C. Berhubungan dengan lukisan tangan", "D. Berhubungan dengan suara audio"],
+                answer: 1,
+                exp: "Digital berkaitan dengan data berbasis komputer dan jaringan internet."
+            },
+            {
+                q: "Apa pesan moral (amanat) utama dari cerita 'Petualangan Bimo'?",
+                options: [
+                    "A. Komputer hanya untuk bermain game",
+                    "B. Kita harus bijak menggunakan teknologi, rajin membaca, dan selalu jujur",
+                    "C. Tidak perlu bertanya kepada guru saat mendapat kesulitan",
+                    "D. Membaca buku digital tidak ada gunanya"
+                ],
+                answer: 1,
+                exp: "Pesan utamanya adalah menggunakan teknologi secara bijak, jujur, dan rajin membaca."
+            },
+            {
+                q: "Siapakah sosok yang menuliskan pesan bijak rahasia di dalam dokumen tersebut?",
+                options: ["A. Kepala Sekolah", "B. Rani", "C. Pak Hadi (Pustakawan)", "D. Bimo sendiri"],
+                answer: 2,
+                exp: "Dokumen tersebut disiapkan oleh Pak Hadi sebagai tantangan edukatif."
+            }
+        ];
+
+        // Soal Menyimak
+        const listeningQuestions = [
+            {
+                q: "1. Gedung fasilitas baru apa yang didatangi Bimo?",
+                options: ["A. Laboratorium IPA", "B. Perpustakaan Digital", "C. Ruang Musik"],
+                correct: 1
+            },
+            {
+                q: "2. Siapa nama teman yang diajak Bimo bekerja sama?",
+                options: ["A. Rani", "B. Siti", "C. Dewi"],
+                correct: 0
+            },
+            {
+                q: "3. Tiga kata kunci yang berhasil ditemukan adalah...",
+                options: ["A. Komputer, Rajin, Cerdas", "B. Buku, Jujur, Teknologi", "C. Sekolah, Bimo, Rani"],
+                correct: 1
+            }
+        ];
+
+        /* ----------------------------------------------------
+           NAVIGATION & UI LOGIC
+           ---------------------------------------------------- */
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) targetPage.classList.add('active');
+
+            // Highlight active tab
+            const btnIndex = ['page-home','page-tujuan','page-cerita','page-unsur','page-menyimak','page-bicara','page-menulis','page-kuis','page-hasil'].indexOf(pageId);
+            if (btnIndex !== -1) {
+                const tabs = document.querySelectorAll('.nav-tab-btn');
+                if (tabs[btnIndex]) tabs[btnIndex].classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startAdventure() {
+            const inputName = document.getElementById('inputStudentName').value.trim();
+            if (inputName === "") {
+                showToast("Harap masukkan namamu terlebih dahulu!", "warning");
+                return;
+            }
+            studentName = inputName;
+            document.getElementById('headerUserName').textContent = studentName;
+            document.getElementById('resultStudentName').textContent = "Nama Siswa: " + studentName;
+            showToast("Selamat bertualang, " + studentName + "!", "success");
+            switchPage('page-cerita');
+        }
+
+        /* ----------------------------------------------------
+           STORY READER LOGIC
+           ---------------------------------------------------- */
+        function renderStoryStep() {
+            const data = storyData[currentStoryStep];
+            document.getElementById('storyChapterTitle').textContent = data.title;
+            document.getElementById('storyTextDisplay').textContent = data.text;
+            document.getElementById('storySvgGraphic').innerHTML = data.svg;
+            document.getElementById('storyStepIndicator').textContent = `Halaman ${currentStoryStep + 1} dari ${storyData.length}`;
+            
+            const progressPct = ((currentStoryStep + 1) / storyData.length) * 100;
+            document.getElementById('storyProgressBar').style.width = progressPct + '%';
+
+            document.getElementById('prevStoryBtn').disabled = (currentStoryStep === 0);
+            if (currentStoryStep === storyData.length - 1) {
+                document.getElementById('nextStoryBtn').innerHTML = 'Selesai <i class="fa-solid fa-check"></i>';
+            } else {
+                document.getElementById('nextStoryBtn').innerHTML = 'Berikutnya <i class="fa-solid fa-chevron-right"></i>';
+            }
+        }
+
+        function changeStoryPage(delta) {
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+            
+            if (currentStoryStep + delta >= storyData.length) {
+                switchPage('page-unsur');
+                return;
+            }
+            currentStoryStep = Math.max(0, Math.min(storyData.length - 1, currentStoryStep + delta));
+            renderStoryStep();
+        }
+
+        /* ----------------------------------------------------
+           TEXT-TO-SPEECH (TTS)
+           ---------------------------------------------------- */
+        function speakStoryText() {
+            if (!('speechSynthesis' in window)) {
+                showToast("Fitur pembacaan suara tidak didukung browser ini.", "warning");
+                return;
+            }
+
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                document.getElementById('ttsBtnText').textContent = "Dengarkan Cerita";
+                return;
+            }
+
+            const text = storyData[currentStoryStep].text;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'id-ID';
+            utterance.rate = 0.9;
+
+            utterance.onend = () => {
+                document.getElementById('ttsBtnText').textContent = "Dengarkan Cerita";
+            };
+
+            window.speechSynthesis.speak(utterance);
+            document.getElementById('ttsBtnText').textContent = "Hentikan Suara";
+        }
+
+        function speakStoryTextFull() {
+            if (!('speechSynthesis' in window)) {
+                showToast("Fitur suara tidak didukung browser.", "warning");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            const fullText = storyData.map(s => s.text).join(" ");
+            const utterance = new SpeechSynthesisUtterance(fullText);
+            utterance.lang = 'id-ID';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+            showToast("Memutar narasi cerita penuh...", "info");
+        }
+
+        /* ----------------------------------------------------
+           LISTENING ACTIVITY
+           ---------------------------------------------------- */
+        function renderListeningQuiz() {
+            const container = document.getElementById('listeningQuizList');
+            container.innerHTML = "";
+
+            listeningQuestions.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = "quiz-question-card";
+                card.innerHTML = `
+                    <p style="font-weight:700;">${item.q}</p>
+                    <div style="margin-top:8px;">
+                        ${item.options.map((opt, oIdx) => `
+                            <button class="quiz-option" style="width:100%; text-align:left;" onclick="checkListeningAns(${idx}, ${oIdx}, this)">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="listenFB-${idx}" class="explanation-box"></div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function checkListeningAns(qIdx, oIdx, btn) {
+            const fbBox = document.getElementById(`listenFB-${qIdx}`);
+            const correctIdx = listeningQuestions[qIdx].correct;
+
+            fbBox.style.display = "block";
+            if (oIdx === correctIdx) {
+                fbBox.innerHTML = "<span style='color:green;'><i class='fa-solid fa-check'></i> Benar sekali!</span>";
+                btn.style.borderColor = "var(--accent-green)";
+                btn.style.background = "#dcfce7";
+            } else {
+                fbBox.innerHTML = "<span style='color:red;'><i class='fa-solid fa-xmark'></i> Kurang tepat, ayo coba dengarkan lagi!</span>";
+                btn.style.borderColor = "#ef4444";
+                btn.style.background = "#fee2e2";
+            }
+        }
+
+        /* ----------------------------------------------------
+           SPEAKING & WRITING ACTIVITIES
+           ---------------------------------------------------- */
+        function showSampleOutline() {
+            const sample = "KERANGKA PRESENTASI BIMO:\n1. Pembuka: Halo semuanya, nama saya [Nama], hari ini saya menceritakan Petualangan Bimo.\n2. Tokoh: Bimo anak yang ingin tahu dan jujur, Rani anak yang pintar.\n3. Konflik: Menemukan ensiklopedia digital yang terkunci teka-teki.\n4. Penyelesaian: Menemukan 3 kata kunci jujur, membaca, dan teknologi.\n5. Amanat: Gunakan teknologi secara bijak dan selalu jujur!";
+            document.getElementById('speakOutlineText').value = sample;
+            showToast("Contoh kerangka berhasil ditampilkan!", "info");
+        }
+
+        function saveSpeakOutline() {
+            const val = document.getElementById('speakOutlineText').value.trim();
+            if (!val) {
+                showToast("Tuliskan kerangkamu terlebih dahulu!", "warning");
+                return;
+            }
+            showToast("Kerangka presentasi berhasil disimpan di sesi!", "success");
+        }
+
+        function checkWritingCompleteness() {
+            const text = document.getElementById('writeAltEndingText').value.trim();
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+
+            if (sentences.length >= 3) {
+                showToast(`Bagus! Tulisanmu memenuhi syarat (${sentences.length} kalimat).`, "success");
+            } else {
+                showToast(`Tulisanmu baru ${sentences.length} kalimat. Buat minimal 3-5 kalimat ya!`, "warning");
+            }
+        }
+
+        function downloadWritingAsTxt() {
+            const text = document.getElementById('writeAltEndingText').value.trim();
+            if (!text) {
+                showToast("Tuliskan akhir cerita sebelum mengunduh!", "warning");
+                return;
+            }
+
+            const student = studentName || "Siswa_Kelas5";
+            const content = `LAPORAN MENULIS KREATIF BAHASA INDONESIA\nNama Siswa: ${student}\nJudul: Akhir Cerita Alternatif - Petualangan Bimo\n\nIsi Cerita:\n${text}`;
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `Akhir_Cerita_Bimo_${student.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            showToast("File cerita berhasil diunduh!", "success");
+        }
+
+        /* ----------------------------------------------------
+           QUIZ ENGINE
+           ---------------------------------------------------- */
+        function renderQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = "";
+
+            quizQuestions.forEach((qItem, qIdx) => {
+                const card = document.createElement('div');
+                card.className = "quiz-question-card";
+                card.id = `quizCard-${qIdx}`;
+
+                card.innerHTML = `
+                    <p style="font-weight:700; font-size:1.05rem;">Soal ${qIdx + 1}: ${qItem.q}</p>
+                    <div style="margin-top:12px;">
+                        ${qItem.options.map((opt, oIdx) => `
+                            <div class="quiz-option ${quizAnswers[qIdx] === oIdx ? 'selected' : ''}" 
+                                 onclick="selectQuizOption(${qIdx}, ${oIdx})">
+                                <i class="fa-regular ${quizAnswers[qIdx] === oIdx ? 'fa-circle-dot' : 'fa-circle'}"></i>
+                                <span>${opt}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="explanation-box" id="explanation-${qIdx}">
+                        <strong>Pembahasan:</strong> ${qItem.exp}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectQuizOption(qIdx, oIdx) {
+            if (quizSubmitted) return; // Lock if submitted
+            quizAnswers[qIdx] = oIdx;
+            renderQuiz();
+        }
+
+        function submitQuiz() {
+            const unanswered = quizAnswers.includes(null);
+            if (unanswered) {
+                const count = quizAnswers.filter(a => a === null).length;
+                showToast(`Masih ada ${count} soal yang belum dijawab!`, "warning");
+                return;
+            }
+
+            quizSubmitted = true;
+            let scoreCount = 0;
+
+            quizQuestions.forEach((qItem, qIdx) => {
+                const isCorrect = quizAnswers[qIdx] === qItem.answer;
+                if (isCorrect) scoreCount++;
+
+                // Show Explanation
+                const expBox = document.getElementById(`explanation-${qIdx}`);
+                if (expBox) expBox.style.display = 'block';
+
+                // Mark Options
+                const card = document.getElementById(`quizCard-${qIdx}`);
+                if (card) {
+                    const options = card.querySelectorAll('.quiz-option');
+                    options.forEach((opt, oIdx) => {
+                        if (oIdx === qItem.answer) {
+                            opt.classList.add('correct');
+                        } else if (oIdx === quizAnswers[qIdx] && !isCorrect) {
+                            opt.classList.add('incorrect');
+                        }
+                    });
+                }
+            });
+
+            const finalScore = (scoreCount / quizQuestions.length) * 100;
+            
+            // Lock Submit Button
+            document.getElementById('submitQuizBtn').disabled = true;
+            document.getElementById('submitQuizBtn').innerHTML = '<i class="fa-solid fa-lock"></i> Kuis Selesai';
+
+            // Populate Results Page
+            document.getElementById('resultScoreNum').textContent = finalScore;
+            document.getElementById('resultCorrectNum').textContent = `${scoreCount} / 10`;
+            document.getElementById('resultWrongNum').textContent = `${10 - scoreCount} / 10`;
+            document.getElementById('resultTimestamp').textContent = "Tanggal: " + new Date().toLocaleDateString('id-ID', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            });
+
+            const msgBox = document.getElementById('resultMotivationMsg');
+            if (finalScore >= 80) {
+                msgBox.style.background = "#dcfce7";
+                msgBox.style.color = "#15803d";
+                msgBox.innerHTML = "🎉 Luar Biasa! Kamu sangat memahami cerita dan majas dengan sangat baik!";
+            } else if (finalScore >= 60) {
+                msgBox.style.background = "#fef3c7";
+                msgBox.style.color = "#b45309";
+                msgBox.innerHTML = "👍 Bagus Sekali! Kamu sudah memahami sebagian besar isi cerita.";
+            } else {
+                msgBox.style.background = "#fee2e2";
+                msgBox.style.color = "#b91c1c";
+                msgBox.innerHTML = "💪 Tetap Semangat! Pelajari kembali unsur cerita dan majas lalu coba kuis lagi!";
+            }
+
+            showToast("Kuis berhasil dikirim! Silakan lihat Laporan Hasil Belajar.", "success");
+            setTimeout(() => switchPage('page-hasil'), 1500);
+        }
+
+        function resetQuizAndRetry() {
+            quizAnswers = Array(10).fill(null);
+            quizSubmitted = false;
+            document.getElementById('submitQuizBtn').disabled = false;
+            document.getElementById('submitQuizBtn').innerHTML = '<i class="fa-solid fa-paper-plane"></i> Kirim & Lihat Nilai';
+            renderQuiz();
+            switchPage('page-kuis');
+            showToast("Kuis diulang. Selamat mengerjakan kembali!", "info");
+        }
+
+        /* ----------------------------------------------------
+           MODAL & TOAST HELPERS
+           ---------------------------------------------------- */
+        function openGlossaryModal() {
+            document.getElementById('glossaryModal').classList.add('active');
+        }
+
+        function closeGlossaryModal() {
+            document.getElementById('glossaryModal').classList.remove('active');
+        }
+
+        function showToast(message, type = "info") {
+            const toast = document.getElementById('toastNotification');
+            const msgEl = document.getElementById('toastMessage');
+            const iconEl = document.getElementById('toastIcon');
+
+            msgEl.textContent = message;
+
+            if (type === "success") {
+                toast.style.background = "#10b981";
+                iconEl.className = "fa-solid fa-circle-check";
+            } else if (type === "warning") {
+                toast.style.background = "#f59e0b";
+                iconEl.className = "fa-solid fa-triangle-exclamation";
+            } else {
+                toast.style.background = "#1e88e5";
+                iconEl.className = "fa-solid fa-circle-info";
+            }
+
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        /* ----------------------------------------------------
+           INIT ON LOAD
+           ---------------------------------------------------- */
+        window.onload = function() {
+            renderStoryStep();
+            renderListeningQuiz();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
